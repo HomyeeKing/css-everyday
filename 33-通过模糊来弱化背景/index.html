@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>弱化背景</title>
+  <style>
+    main {
+      width: 100vw;
+      height: 100vh;
+      transition: filter, transform .6s;
+    }
+
+    main.de-emphasized {
+      filter: blur(5px) contrast(.8) brightness(.8);
+      transform: scale(.7);
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi consectetur non ea animi minima officiis magnam,
+    sapiente tempora rerum sed beatae, delectus omnis magni quibusdam optio! Commodi maiores aliquid ut.
+
+    <button>click to open dialog</button>
+
+  </main>
+  <dialog>
+    this is dialog , click on me to dismiss
+  </dialog>
+  <script>
+    (function () {
+      const main = document.querySelector('main')
+      const dialog = document.querySelector("dialog")
+      const button = document.querySelector("button")
+      dialog.addEventListener('click', () => {
+        main.classList.remove('de-emphasized')
+        dialog.open = false
+      })
+      button.onclick = () => {
+        main.classList.add('de-emphasized')
+        dialog.showModal()
+      }
+    })()
+  </script>
+</body>
+
+</html>

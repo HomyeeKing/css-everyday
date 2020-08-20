@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>自定义复选框</title>
+  <style>
+    label::before {
+      transition: content 2s ease-in-out 2s;
+    }
+
+    #awesome+label::before {
+      content: '\a0';
+      display: inline-block;
+      vertical-align: .2em;
+      width: 0.8em;
+      height: 0.8em;
+      margin-right: 0.2em;
+      border-radius: .2em;
+      background-color: silver;
+      text-indent: .15em;
+      line-height: .65;
+
+    }
+
+    #awesome:checked+label::before {
+      content: '\2713';
+      background-color: yellowgreen;
+    }
+  </style>
+</head>
+
+<body>
+  <input type="checkbox" id="awesome" />
+  <label for="awesome">Awesome!</label>
+</body>
+
+</html>
