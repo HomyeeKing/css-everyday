@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>毛玻璃效果</title>
+  <style>
+    /* 
+      1. 如果仅仅通过alpha值来实现，不透明度过低的话会影响文字阅读，
+         过高的话底色就会偏白，效果会大打折扣，
+         方案： 将被盖住的部分底层进行模糊处理
+      2. 借助filter来实现模糊处理，但是不能应用于当前元素上，因为这样文字也会被一并模糊处理
+      3. 别慌 我们的好朋友伪元素随时准备着，将伪元素铺在当前元素的下面，并在其上做文章
+      4. 给伪元素设置和背层相同的内容，此时对伪元素进行模糊处理就ok
+     */
+    body,
+    main::before {
+      background: url('./signature.jpg') 0 / cover fixed;
+    }
+
+    main {
+      margin-top: 45vh;
+      margin-left: 40vw;
+      background: hsla(0, 0%, 100%, .3);
+      width: 1000px;
+      height: 700px;
+      padding: 30px;
+      font-size: 1.5rem;
+      text-align: center;
+      position: relative;
+    }
+
+    main::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      filter: blur(20px);
+      z-index: -1;
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <blockquote>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione impedit expedita repellendus quasi id incidunt
+      cumque nobis dolores non eveniet nihil veritatis omnis rem quia provident ex exercitationem blanditiis,
+      praesentium perferendis aliquam cupiditate alias! Dignissimos commodi necessitatibus harum magnam sed nobis eum ex
+      modi? Aperiam, dolorem omnis. Necessitatibus temporibus maiores voluptas ex consequatur quisquam, officia
+      officiis, blanditiis dignissimos adipisci corporis labore consectetur placeat illo voluptatibus recusandae nulla
+      aliquid dolores quia fugit similique hic. Expedita porro ducimus nulla debitis minima. Magnam aperiam nam error
+      explicabo iste eligendi natus itaque, quaerat animi fugit cumque omnis, dicta quod quos consequuntur vitae facilis
+      dolores obcaecati, aliquid eaque repudiandae eius laudantium et autem. Ipsum quisquam, vel facere suscipit
+      asperiores distinctio nemo omnis esse dolorum temporibus nostrum, aliquam excepturi adipisci, deleniti quasi
+      libero molestias?
+      consectetur ratione nihil debitis cumque harum beatae sunt asperiores at ab iure?
+      <footer>
+        ————
+        <cite>
+          Homyee King,
+          The Picture of Dorain Gray
+        </cite>
+      </footer>
+    </blockquote>
+  </main>
+</body>
+
+</html>
