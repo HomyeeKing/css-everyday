@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>连字</title>
+  <style>
+    @font-face {
+      /* 
+        1. 我们通常为font-family指定多个值，当优先字体不可用的时候我们可以进行回退
+        2. 其实可以进一步扩展，比如某个字体只包括某些字符，那么这个字体只会作用到他包含的字符中去，
+           其他字体会采用后边给定的字体队列中的样式进行渲染
+       */
+      font-family: 'Ampersand';
+      src: local('Baskerville-Italic'),
+        local('GoudyOldStyleT-Italic'),
+        local('Palatino-Italic'),
+        local('BookAntiqua-Italic');
+      /* 1. unicode-range只在@font-face内部生效
+           2. 作用：将当前font-face作用的字符范围限制在某个子集中,对本地字体和远程字体都有效
+                    甚至当所有字符用不到该远程字体的时候都不去下载，节省带宽
+           3. 用法：基于‘Unicode码位‘，可借助网上工具查询某个字符的16进制码位,也可以调用js提供的API来查询
+                  "[char u want to match]".chatCodeAt([index u want to match]).toString(16)
+                  获取到码位之后需要在前面加上'U+'作为前缀
+
+                  当然也可以指定区间，比如U+400-4FF 可以写成 U+4??
+    
+         */
+      unicode-range: U+26;
+
+    }
+
+    h1 {
+      font-family: Ampersand, Arial, Helvetica, sans-serif;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>HTML & CSS</h1>
+</body>
+
+</html>
