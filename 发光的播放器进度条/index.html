@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>controls</title>
+  <style>
+    body {
+      background-color: #ccc;
+    }
+
+    div {
+      width: 30px;
+      height: 30px;
+      border-radius: 100%;
+      background-color: black;
+      margin: 200px auto;
+      animation: shine ease 1s infinite;
+      /* 再次回顾animation的语法
+        animation : animation-name timing-function delay 
+        循环的次数 方向 确定执行前后的样式应用时机  暂停/播放
+      */
+
+    }
+
+    @keyframes shine {
+      from {
+        box-shadow: gold 0 0 10px 2px;
+      }
+
+      to {
+        box-shadow: yellow 0 0 10px 5px;
+
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div></div>
+</body>
+
+</html>
